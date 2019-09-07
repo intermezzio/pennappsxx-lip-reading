@@ -49,13 +49,7 @@ function requestVideo() {
 }
 
 function tellMe(){
-  $('form[name=sub]').submit(function(){
-    $.post($(this).attr('action'), $(this).serialize(), function(json) {
-      alert(json);
-    }, 'json');
-    return false;
-  });
-}
+  }
 
 function startRecording() {
   recorder = new MediaRecorder(stream);
@@ -64,6 +58,7 @@ function startRecording() {
   stopBtn.removeAttribute('disabled');
   startBtn.disabled = true;
   setTimeout(sendNew, 3000)
+  
 }
 
 function sendNew(){
