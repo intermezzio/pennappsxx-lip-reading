@@ -3,13 +3,14 @@
 <title>Lip Reading</title>
 <!-- Materialize CSS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <!-- Regular CSS -->
 <link rel="stylesheet" type="text/css" href="index.css">
 </head>
 <body>
 <div>
   <nav>
-    <div class="nav-wrapper">
+    <div class="nav-wrapper orange lighten-1">
       <a href="#" class="brand-logo">Logo</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="#">Film</a></li>
@@ -74,6 +75,12 @@ function requestVideo() {
 function tellMe(){
   }
 
+/* TODO:
+ * Remove audio from the MediaRecorder
+ * Stop streaming after the stop button is pressed
+ * Hide the video element after the stop button is pressed
+ * Add the transcript to the 'transcript-txt' span element
+ */
 function startRecording() {
   recorder = new MediaRecorder(stream, {audioBitsPerSecond: 0});
   recorder.start();
