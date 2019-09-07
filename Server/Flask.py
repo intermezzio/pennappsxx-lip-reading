@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+from pathlib import Path
 import os
 from flask import Flask, Response, request, render_template, make_response
 from werkzeug.utils import secure_filename
@@ -25,7 +26,8 @@ def basicHTML():
 def get_data():
     file = request.files['clip']
     file.save(os.path.join(UPLOAD_DIR, file.filename))
-    #answer=COMPUTE IT
+    print("Converting")
+    os.system("ffmpeg -y -i "+ os.path.join(UPLOAD_DIR, file.filename) + " -qscale 0 ./proc_uploads/"+Path(os.path.join(UPLOAD_DIR, file.filename)).stem + ".mp4")
     return "answer"
 
 @app.route('/clear', methods=['GET'])
