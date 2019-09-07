@@ -1,5 +1,7 @@
 #!/usr/bin/env python
+import os
 from flask import Flask, Response, request, render_template
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 
@@ -9,7 +11,11 @@ def basicHTML():
 
 @app.route('/form', methods=['POST'])
 def get_data():
-    print('Recieved from client: {}'.format(request.data))
+    # print('Recieved from client: {}'.format(request.data))
+    print 'something cool just happened!'
+    print(request.files.keys())
+    file = request.files['clip']
+    file.save(os.path.join('./uploads', file.filename))
     return Response('We received something...')
 
 if __name__ == '__main__':
