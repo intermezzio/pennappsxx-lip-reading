@@ -118,6 +118,8 @@ function stopRecording() {
     clearTimeout(timer);
     timer = 0;
   }
+  video.srcObject = null; 
+  stopBtn.removeAttribute('disabled');
   startBtn.removeAttribute('disabled');
   stopBtn.disabled = true;
 }
