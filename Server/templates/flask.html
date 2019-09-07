@@ -91,14 +91,11 @@ function sendNew(){
     a.href = URL.createObjectURL(e.data);
     a.textContent = a.download;
 
-    // something
     var formData = new FormData();
     formData.append('clip', e.data, a.download);
     console.log(typeof(e.data));
-    // formData.append('filename', a.download);
     var request = new XMLHttpRequest();
     request.open("POST", "http://127.0.0.1:5000/form");
-    // request.setRequestHeader("Content-Type", "multipart/form-data");
     request.onload = function() {
       console.log(this.responseText);
     }
@@ -106,8 +103,6 @@ function sendNew(){
 
     li.appendChild(a);
     ul.appendChild(li);
-    // filesub = document.getElementById('toFlask');
-    // document.getElementById('go').click(); 
   };
   recorder.stop();
   recorder.start();
@@ -124,6 +119,16 @@ function stopRecording() {
     a.textContent = a.download;
     li.appendChild(a);
     ul.appendChild(li);
+
+    var formData = new FormData();
+    formData.append('clip', e.data, a.download);
+    console.log(typeof(e.data));
+    var request = new XMLHttpRequest();
+    request.open("POST", "http://127.0.0.1:5000/form");
+    request.onload = function() {
+      console.log(this.responseText);
+    }
+    request.send(formData);
   };
   recorder.stop();
   if(timer) {
