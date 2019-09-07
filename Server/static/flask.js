@@ -32,7 +32,7 @@ function startRecording() {
   video.srcObject = stream;
   stopBtn.removeAttribute('disabled');
   startBtn.disabled = true;
-  setTimeout(sendNew, 3000)
+  setTimeout(sendNew, 5000)
 
 }
 
@@ -40,7 +40,7 @@ function sendNew(){
   recorder.ondataavailable = e => {
 
     var formData = new FormData();
-    formData.append('clip', e.data,  (new Date() + '').slice(4, 28).toString() + '.webm');
+    formData.append('clip', e.data,  (new Date().toISOString() + '').slice(4, 28).toString() + '.webm');
     console.log(typeof(e.data));
     var request = new XMLHttpRequest();
     request.open("POST", URL + "/form");
@@ -60,7 +60,7 @@ function stopRecording() {
   recorder.ondataavailable = e => {
 
     var formData = new FormData();
-    formData.append('clip', e.data, (new Date() + '').slice(4, 28).toString() + '.webm');
+    formData.append('clip', e.data, (new Date().toISOString() + '').slice(4, 28).toString() + '.webm');
     console.log(typeof(e.data));
     var request = new XMLHttpRequest();
     request.open("POST", URL + "/form");
