@@ -14,7 +14,8 @@ def get_data():
     file = request.files['clip']
     file.save(os.path.join('./uploads', file.filename))
 
-    return Response('We received something...')
+    #answer=COMPUTE IT
+    return "answer"
 
 
 #TODO: Prepend a session/computer specific identifier to delete only the session specific files, for scaling.
