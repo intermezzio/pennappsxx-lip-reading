@@ -11,9 +11,6 @@ def basicHTML():
 
 @app.route('/form', methods=['POST'])
 def get_data():
-    # print('Recieved from client: {}'.format(request.data))
-    print 'something cool just happened!'
-    print(request.files.keys())
     file = request.files['clip']
     file.save(os.path.join('./uploads', file.filename))
     return Response('We received something...')
