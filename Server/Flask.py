@@ -4,6 +4,7 @@ from flask import Flask, Response, request, render_template, make_response
 from werkzeug.utils import secure_filename
 from google.cloud import texttospeech
 
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="../credentials.json"
 # set up Google Cloud Text to Speech client
 client = texttospeech.TextToSpeechClient()
 voice = texttospeech.types.VoiceSelectionParams(
@@ -36,7 +37,7 @@ def clear_uploads():
 
 @app.route('/voice', methods=['POST'])
 def get_voice():
-    print request.form.get('string')
+    print(request.form.get('string'))
     string = request.form.get('string')
     print(string)
     text_input = texttospeech.types.SynthesisInput(text=string)
@@ -56,4 +57,4 @@ def purge():
     os.system("mkdir uploads")
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0')
