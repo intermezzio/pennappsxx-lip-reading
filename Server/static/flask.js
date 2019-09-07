@@ -76,3 +76,21 @@ function stopRecording() {
   stopBtn.disabled = true;
 }
 
+function textToSpeech(text) {
+  var context = new AudioContext();
+
+  var formData = new FormData();
+  formData.append("string", text);
+  var request = new XMLHttpRequest();
+  request.open("POST", "http://127.0.0.1:5000/voice");
+  request.responseType = "arraybuffer";
+  request.onload = function() {
+    context.decodeAudioData(request.response, buffer => {
+      var source = context.createBufferSource();
+      source.buffer = buffer;
+      source.connect(context.destination);
+      source.start(0);
+    });
+  }
+  request.send(formData);
+}
