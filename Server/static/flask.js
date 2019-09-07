@@ -1,3 +1,7 @@
+// const URL = 'http://127.0.0.1:5000/form';
+const URL = 'http://3.210.181.96:5000';
+
+
 var video, reqBtn, startBtn, stopBtn, ul, stream, recorder, timer;
 video = document.getElementById('video');
 reqBtn = document.getElementById('request');
@@ -39,7 +43,7 @@ function sendNew(){
     formData.append('clip', e.data,  (new Date() + '').slice(4, 28).toString() + '.webm');
     console.log(typeof(e.data));
     var request = new XMLHttpRequest();
-    request.open("POST", "http://127.0.0.1:5000/form");
+    request.open("POST", URL + "/form");
     request.onload = function() {
       document.getElementById('transcript-txt').textContent=this.responseText;
     }
@@ -59,7 +63,7 @@ function stopRecording() {
     formData.append('clip', e.data, (new Date() + '').slice(4, 28).toString() + '.webm');
     console.log(typeof(e.data));
     var request = new XMLHttpRequest();
-    request.open("POST", "http://127.0.0.1:5000/form");
+    request.open("POST", URL + "/form");
     request.onload = function() {
       console.log(this.responseText);
     }
@@ -82,7 +86,7 @@ function textToSpeech(text) {
   var formData = new FormData();
   formData.append("string", text);
   var request = new XMLHttpRequest();
-  request.open("POST", "http://127.0.0.1:5000/voice");
+  request.open("POST", URL + "/voice");
   request.responseType = "arraybuffer";
   request.onload = function() {
     context.decodeAudioData(request.response, buffer => {
