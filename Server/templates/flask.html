@@ -1,29 +1,52 @@
 <html>
+<head>
+<title>Lip Reading</title>
+<!-- Materialize CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<!-- Regular CSS -->
+<link rel="stylesheet" type="text/css" href="index.css">
+</head>
 <body>
 <div>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Logo</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="sass.html">Sass</a></li>
+        <li><a href="badges.html">Components</a></li>
+        <li><a href="collapsible.html">JavaScript</a></li>
+      </ul>
+    </div>
+  </nav>
   <form name = "sub" action="/form" onSubmit="tellMe();return false" method="post">
   <!--<form onSubmit="return false">-->
   <input type="file" hidden id="toFlask">
   </input>
-  <button hidden type="submit" id = "go"></button>
+  <button hidden type="submit" class='btn-hidden' id = "go"></button>
   </form>
-  <button id='request'>
+  <button id='request' class='btn'>
     Request Camera
   </button>
-  <button id='start' onclick = "startRecording()">
+  <button id='start' class='btn' onclick = "startRecording()">
     Start Recording
   </button>
-  <button id='stop' onclick = "stopRecording()" hidden>
+  <button id='stop' class='btn' onclick = "stopRecording()" hidden>
     Stop Recording
   </button>
+  <video id='video' autoplay></video>
+  <div id='transcript'>
+    Transcript:
+    <br /><span id='transcript-txt'></span>
+  </div>
   <ul id='ul'>
     Downloads List:
   </ul>
 
 </div>
-<video id='video' autoplay></video>
+<!-- Materialize JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script type = "text/javascript">
-var video, reqBtn, startBtn, stopBtn, ul, stream, recorder;
+var video, reqBtn, startBtn, stopBtn, ul, stream, recorder, timer;
 video = document.getElementById('video');
 reqBtn = document.getElementById('request');
 startBtn = document.getElementById('start');
@@ -52,7 +75,7 @@ function tellMe(){
   }
 
 function startRecording() {
-  recorder = new MediaRecorder(stream);
+  recorder = new MediaRecorder(stream, {audioBitsPerSecond: 0});
   recorder.start();
   video.srcObject = stream; 
   stopBtn.removeAttribute('disabled');
@@ -76,7 +99,7 @@ function sendNew(){
   };
   recorder.stop();
   recorder.start();
-  setTimeout(sendNew, 3000)
+  timer = setTimeout(sendNew, 3000)
 }
 
 function stopRecording() {
@@ -91,6 +114,10 @@ function stopRecording() {
     ul.appendChild(li);
   };
   recorder.stop();
+  if(timer) {
+    clearTimeout(timer);
+    timer = 0;
+  }
   startBtn.removeAttribute('disabled');
   stopBtn.disabled = true;
 }
