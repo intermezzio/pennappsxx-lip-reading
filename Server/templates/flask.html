@@ -5,7 +5,23 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <!-- Regular CSS -->
-<link rel="stylesheet" type="text/css" href="flask.css">
+<style type="text/css">
+  * {
+    border: 1px black dashed;
+  }
+  body {
+    background-color: #FFCC0077;
+  }  
+
+  #video-buttons {
+
+  }
+
+  a .btn {
+    padding: 10px;
+    margin: 10px;
+  }
+</style>
 </head>
 <body>
 
@@ -25,8 +41,8 @@
     <button hidden type="submit" id = "go"></button>
     <div class="col s3" id="video-buttons">
       <a class="waves-effect waves-light btn" id='request'>Request Camera<i class="material-icons right">camera_alt</i></a>
-      <a class="waves-effect waves-light btn" id='start' onclick='startRecording()'>Start Recording<i class="material-icons right">videocam</i></a>
-      <a class="waves-effect waves-light btn" id='stop' onclick='stopRecording()' hidden>Stop Recording<i class="material-icons right">videocam_off</i></a>
+      <a class="waves-effect waves-light btn disabled" id='start' onclick='startRecording()'>Start Recording<i class="material-icons right">videocam</i></a>
+      <a class="waves-effect waves-light btn disabled" id='stop' onclick='stopRecording()' hidden>Stop Recording<i class="material-icons right">videocam_off</i></a>
     </div>
     <!--   <button id='start' class='btn' onclick = "startRecording()">
       Start Recording <i class="material-icons right">videocam</i>
