@@ -15,9 +15,3 @@ root
 --App
   
 --Web
- 
--Scraper
-  
---code
-  
---data
