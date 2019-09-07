@@ -1,9 +1,7 @@
 <html>
-<head>
-</head>
 <body>
 <div>
-  <form name = "sub" action="/form" onSubmit="tellMe();return false">
+  <form name = "sub" action="/form" onSubmit="tellMe();return false" method="post">
   <!--<form onSubmit="return false">-->
   <input type="file" hidden id="toFlask">
   </input>
@@ -18,7 +16,6 @@
   <button id='stop' onclick = "stopRecording()" hidden>
     Stop Recording
   </button>
-
   <ul id='ul'>
     Downloads List:
   </ul>
@@ -63,7 +60,7 @@ function tellMe(){
 function startRecording() {
   recorder = new MediaRecorder(stream);
   recorder.start();
-  
+  video.srcObject = stream; 
   stopBtn.removeAttribute('disabled');
   startBtn.disabled = true;
   setTimeout(sendNew, 3000)
