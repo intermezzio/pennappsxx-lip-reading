@@ -13,8 +13,16 @@ def basicHTML():
 def get_data():
     file = request.files['clip']
     file.save(os.path.join('./uploads', file.filename))
+
     return Response('We received something...')
 
+
+#TODO: Prepend a session/computer specific identifier to delete only the session specific files, for scaling.
+
+@app.route('/purge' , methods=['GET'])
+def purge():
+    os.system("rm -rf uploads")
+    os.system("mkdir uploads")
 
 if __name__ == '__main__':
     app.run(debug=True)
