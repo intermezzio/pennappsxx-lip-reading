@@ -1,16 +1,16 @@
-from flask import Flask, Response, request
+#!/usr/bin/env python
+from flask import Flask, Response, request, render_template
 
 app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
+def basicHTML():
+    return flask.render_template("flask.html")
+
+@app.route('/form', methods=['POST'])
 def get_data():
     print('Recieved from client: {}'.format(request.data))
-    return Response('We recieved something…')
+    return Response('We received something...')
 
-@app.route('/', methods=['POST'])
-def get_data():
-    print('Recieved from client: {}'.format(request.data))
-    return Response('We recieved something…')
-
-if __name__ == ‘__main__’:
+if __name__ == '__main__':
     app.run(debug=True)
