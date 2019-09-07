@@ -10,3 +10,11 @@ div {
 	padding: 5px;
 	border: 1px black dashed;
 }
+
+#video-buttons {
+
+}
+
+a .btn {
+	margin: 10px;
+}

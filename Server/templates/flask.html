@@ -5,47 +5,48 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <!-- Regular CSS -->
-<link rel="stylesheet" type="text/css" href="index.css">
+<link rel="stylesheet" type="text/css" href="flask.css">
 </head>
 <body>
-<div>
+
+<div id="container">
   <nav>
     <div class="nav-wrapper orange lighten-1">
       <a href="#" class="brand-logo">Logo</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="#">Film</a><i class="material-icons">videocam</i></li>
+        <li><a href="#">Film</a></li>
         <li><a href="#">Transcript</a></li>
         <li><a href="#">About</a></li>
       </ul>
     </div>
   </nav>
   <input type="file" hidden id="toFlask">
-  </input>
-  <button hidden type="submit" class='btn-hidden' id = "go"></button>
-  </form>
-  <button id='request' class='btn'>
-    Request Camera <i class="material-icons">camera_alt</i>
-  </button>
-  <a class="waves-effect waves-light btn"><i class="material-icons left">cloud</i>button</a>
-
-  <button id='start' class='btn' onclick = "startRecording()">
-    Start Recording <i class="material-icons large">videocam</i>
-  </button>
-  <button id='stop' class='btn' onclick = "stopRecording()" hidden>
-    Stop Recording <i class="material-icons large">videocam_off</i>
-  </button>
-  <video id='video' autoplay></video>
-  <div id='transcript'>
-    Transcript:
-    <br /><span id='transcript-txt'></span>
+  <div class="row">
+    <button hidden type="submit" id = "go"></button>
+    <div class="col s3" id="video-buttons">
+      <a class="waves-effect waves-light btn" id='request'>Request Camera<i class="material-icons right">camera_alt</i></a>
+      <a class="waves-effect waves-light btn" id='start' onclick='startRecording()'>Start Recording<i class="material-icons right">videocam</i></a>
+      <a class="waves-effect waves-light btn" id='stop' onclick='stopRecording()' hidden>Stop Recording<i class="material-icons right">videocam_off</i></a>
+    </div>
+    <!--   <button id='start' class='btn' onclick = "startRecording()">
+      Start Recording <i class="material-icons right">videocam</i>
+    </button>
+    <button id='stop' class='btn' onclick = "stopRecording()" hidden>
+      Stop Recording <i class="material-icons right">videocam_off</i>
+    </button> -->
+    <video id='video' autoplay></video>
+    <div id='transcript'>
+      Transcript:
+      <br /><span id='transcript-txt'></span>
+    </div>
+    <ul id='ul'>
+      Downloads List:
+    </ul>
   </div>
-  <ul id='ul'>
-    Downloads List:
-  </ul>
-
 </div>
 <!-- Materialize JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script type="text/javascript" src="flask.js"></script>
 <script type = "text/javascript">
 var video, reqBtn, startBtn, stopBtn, ul, stream, recorder, timer;
 video = document.getElementById('video');
