@@ -19,8 +19,6 @@
       </ul>
     </div>
   </nav>
-  <form name = "sub" action="/form" onSubmit="tellMe();return false" method="post">
-  <!--<form onSubmit="return false">-->
   <input type="file" hidden id="toFlask">
   </input>
   <button hidden type="submit" class='btn-hidden' id = "go"></button>
@@ -72,15 +70,6 @@ function requestVideo() {
     }).catch(e => console.error(e));
 }
 
-function tellMe(){
-  }
-
-/* TODO:
- * Remove audio from the MediaRecorder
- * Stop streaming after the stop button is pressed
- * Hide the video element after the stop button is pressed
- * Add the transcript to the 'transcript-txt' span element
- */
 function startRecording() {
   recorder = new MediaRecorder(stream, {audioBitsPerSecond: 0});
   recorder.start();
@@ -99,10 +88,24 @@ function sendNew(){
     a.download = ['video_', (new Date() + '').slice(4, 28), '.webm'].join('');
     a.href = URL.createObjectURL(e.data);
     a.textContent = a.download;
+
+    // something
+    var formData = new FormData();
+    formData.append('clip', e.data, a.download);
+    console.log(typeof(e.data));
+    // formData.append('filename', a.download);
+    var request = new XMLHttpRequest();
+    request.open("POST", "http://127.0.0.1:5000/form");
+    // request.setRequestHeader("Content-Type", "multipart/form-data");
+    request.onload = function() {
+      console.log(this.responseText);
+    }
+    request.send(formData);
+
     li.appendChild(a);
     ul.appendChild(li);
-    filesub = document.getElementById('toFlask');
-    document.getElementById('go').click(); 
+    // filesub = document.getElementById('toFlask');
+    // document.getElementById('go').click(); 
   };
   recorder.stop();
   recorder.start();
