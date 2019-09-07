@@ -4,20 +4,20 @@ Repository Structure:
 
 root
 
- ML
+-ML
 
-  algorithms
+--algorithms
 
-  data
+--data
 
- Frontend
+-Frontend
   
-  App
+--App
   
-  Web
+--Web
  
- Scraper
+-Scraper
   
-  code
+--code
   
-  data
+--data
