@@ -21,6 +21,10 @@
     padding: 10px;
     margin: 10px;
   }
+
+  /*#stop {
+    display: none;
+  }*/
 </style>
 </head>
 <body>
@@ -39,10 +43,10 @@
   <input type="file" hidden id="toFlask">
   <div class="row">
     <button hidden type="submit" id = "go"></button>
-    <div class="col s3" id="video-buttons">
-      <a class="waves-effect waves-light btn" id='request'>Request Camera<i class="material-icons right">camera_alt</i></a>
+    <div class="col s4" id="video-buttons">
       <a class="waves-effect waves-light btn disabled" id='start' onclick='startRecording()'>Start Recording<i class="material-icons right">videocam</i></a>
-      <a class="waves-effect waves-light btn disabled" id='stop' onclick='stopRecording()' hidden>Stop Recording<i class="material-icons right">videocam_off</i></a>
+      <a class="waves-effect waves-light btn disabled" id='stop' onclick='stopRecording()'>Stop Recording<i class="material-icons right">videocam_off</i></a>
+      <a class="waves-effect waves-light btn" id='request'>Request Camera<i class="material-icons right">camera_alt</i></a>
     </div>
     <!--   <button id='start' class='btn' onclick = "startRecording()">
       Start Recording <i class="material-icons right">videocam</i>
