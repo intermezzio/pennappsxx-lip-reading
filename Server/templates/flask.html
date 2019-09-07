@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <!-- Regular CSS -->
-<link rel="stylesheet" type="text/css" href="flask.css">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='flask.css') }}">
 </head>
 <body>
 
@@ -28,12 +28,12 @@
       <a class="waves-effect waves-light btn" id='start' onclick='startRecording()'>Start Recording<i class="material-icons right">videocam</i></a>
       <a class="waves-effect waves-light btn" id='stop' onclick='stopRecording()' hidden>Stop Recording<i class="material-icons right">videocam_off</i></a>
     </div>
-    <!--   <button id='start' class='btn' onclick = "startRecording()">
+    <!--<button id='start' class='btn' onclick = "startRecording()">
       Start Recording <i class="material-icons right">videocam</i>
     </button>
-    <button id='stop' class='btn' onclick = "stopRecording()" hidden>
+    <button id='stop' class='btn' onclick = "stopRecording()" hidden>-->
       Stop Recording <i class="material-icons right">videocam_off</i>
-    </button> -->
+    </button>
     <video id='video' autoplay></video>
     <div id='transcript'>
       Transcript:
@@ -46,6 +46,6 @@
 </div>
 <!-- Materialize JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<script type="text/javascript" src="flask.js"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='flask.js') }}"></script>
 </body>
 </html>

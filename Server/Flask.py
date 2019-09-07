@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import os
-from flask import Flask, Response, request, render_template
+from flask import Flask, Response, request, render_template, make_response
 from werkzeug.utils import secure_filename
 from google.cloud import texttospeech
 
@@ -12,7 +12,7 @@ voice = texttospeech.types.VoiceSelectionParams(
 audio_config = texttospeech.types.AudioConfig(
     audio_encoding=texttospeech.enums.AudioEncoding.MP3)
 
-UPLOADS_DIR = './uploads'
+UPLOAD_DIR = './uploads'
 app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
@@ -23,7 +23,8 @@ def basicHTML():
 def get_data():
     file = request.files['clip']
     file.save(os.path.join(UPLOAD_DIR, file.filename))
-    return Response('We received something...')
+    #answer=COMPUTE IT
+    return "answer"
 
 @app.route('/clear', methods=['GET'])
 def clear_uploads():
@@ -34,10 +35,24 @@ def clear_uploads():
 
 @app.route('/voice', methods=['POST'])
 def get_voice():
-    string = request.args.get('string', type=str)
+    print request.form.get('string')
+    string = request.form.get('string')
+    print(string)
     text_input = texttospeech.types.SynthesisInput(text=string)
-    response = client.synthesize_speech(text_input, voice, audio_config)
-    return Response(response.audio_content, mimetype='audio/mpeg')
+    audio = client.synthesize_speech(text_input, voice, audio_config)
+
+    response = make_response(audio.audio_content)
+    response.headers['Content-Type'] = 'audio/wav'
+    response.headers['Content-Disposition'] = 'attachment; filename=voice.wav'
+
+    return response
+
+#TODO: Prepend a session/computer specific identifier to delete only the session specific files, for scaling.
+
+@app.route('/purge' , methods=['GET'])
+def purge():
+    os.system("rm -rf uploads")
+    os.system("mkdir uploads")
 
 if __name__ == '__main__':
     app.run(debug=True)
