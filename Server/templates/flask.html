@@ -80,7 +80,7 @@ function sendNew(){
   recorder.ondataavailable = e => {
 
     var formData = new FormData();
-    formData.append('clip', e.data, (new Date() + '').slice(4, 28), '.webm');
+    formData.append('clip', e.data,  (new Date() + '').slice(4, 28).toString() + '.webm');
     console.log(typeof(e.data));
     var request = new XMLHttpRequest();
     request.open("POST", "http://127.0.0.1:5000/form");
@@ -99,7 +99,7 @@ function stopRecording() {
   recorder.ondataavailable = e => {
 
     var formData = new FormData();
-    formData.append('clip', e.data, (new Date() + '').slice(4, 28), '.webm');
+    formData.append('clip', e.data, (new Date() + '').slice(4, 28).toString() + '.webm');
     console.log(typeof(e.data));
     var request = new XMLHttpRequest();
     request.open("POST", "http://127.0.0.1:5000/form");
