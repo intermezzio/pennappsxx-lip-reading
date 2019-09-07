@@ -37,9 +37,6 @@
     Transcript:
     <br /><span id='transcript-txt'></span>
   </div>
-  <ul id='ul'>
-    Downloads List:
-  </ul>
 
 </div>
 <!-- Materialize JS -->
@@ -50,12 +47,10 @@ video = document.getElementById('video');
 reqBtn = document.getElementById('request');
 startBtn = document.getElementById('start');
 stopBtn = document.getElementById('stop');
-ul = document.getElementById('ul');
 reqBtn.onclick = requestVideo;
 startBtn.onclick = startRecording;
 stopBtn.onclick = stopRecording;
 startBtn.disabled = true;
-ul.style.display = 'none';
 stopBtn.disabled = true;
 
 function requestVideo() {
@@ -73,6 +68,7 @@ function requestVideo() {
 function startRecording() {
   recorder = new MediaRecorder(stream, {audioBitsPerSecond: 0});
   recorder.start();
+  document.getElementById('transcript-txt').textContent="";
   video.srcObject = stream; 
   stopBtn.removeAttribute('disabled');
   startBtn.disabled = true;
@@ -82,25 +78,17 @@ function startRecording() {
 
 function sendNew(){
   recorder.ondataavailable = e => {
-    ul.style.display = 'block';
-    var a = document.createElement('a'),
-      li = document.createElement('li');
-    a.download = ['video_', (new Date() + '').slice(4, 28), '.webm'].join('');
-    a.href = URL.createObjectURL(e.data);
-    a.textContent = a.download;
 
     var formData = new FormData();
-    formData.append('clip', e.data, a.download);
+    formData.append('clip', e.data, (new Date() + '').slice(4, 28), '.webm');
     console.log(typeof(e.data));
     var request = new XMLHttpRequest();
     request.open("POST", "http://127.0.0.1:5000/form");
     request.onload = function() {
-      console.log(this.responseText);
+      document.getElementById('transcript-txt').textContent=this.responseText;
     }
     request.send(formData);
 
-    li.appendChild(a);
-    ul.appendChild(li);
   };
   recorder.stop();
   recorder.start();
@@ -109,17 +97,9 @@ function sendNew(){
 
 function stopRecording() {
   recorder.ondataavailable = e => {
-    ul.style.display = 'block';
-    var a = document.createElement('a'),
-      li = document.createElement('li');
-    a.download = ['video_', (new Date() + '').slice(4, 28), '.webm'].join('');
-    a.href = URL.createObjectURL(e.data);
-    a.textContent = a.download;
-    li.appendChild(a);
-    ul.appendChild(li);
 
     var formData = new FormData();
-    formData.append('clip', e.data, a.download);
+    formData.append('clip', e.data, (new Date() + '').slice(4, 28), '.webm');
     console.log(typeof(e.data));
     var request = new XMLHttpRequest();
     request.open("POST", "http://127.0.0.1:5000/form");
