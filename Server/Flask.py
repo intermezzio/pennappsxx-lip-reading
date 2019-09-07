@@ -15,5 +15,6 @@ def get_data():
     file.save(os.path.join('./uploads', file.filename))
     return Response('We received something...')
 
+
 if __name__ == '__main__':
     app.run(debug=True)
