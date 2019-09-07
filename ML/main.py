@@ -131,8 +131,10 @@ def validation_loop(sess, g, n_batches, chars=None, val_gen = None, tb_writer=No
     if config.print_predictions:
       print()
       for gts, prs, wr in zip(gt_sents, pred_sentences, edists):
-        print ('(wer={:.1f}) {} --> {}'.format(wr*100, gts, prs))
-
+        print ('(wer={:.1f}) {} --> {}'.format(wr*100, 'Analysis', prs))
+        text_file = open("prediction.txt", "w")
+        text_file.write(prs)
+        text_file.close()
     progbar.update(i+1, [ ('cer',cer), ('wer', wer) ] )
     Wer.append(wer)
 

@@ -30,3 +30,4 @@ lm=None, beam=35, bs=1, test_aug:2, horflip True: CER 2.2500, WER 3.000000
 lm=None, beam=0, bs=1, test_aug:0, horflip True: CER 0.8750, WER 1.333333
 lm=None, beam=0, bs=1, test_aug:0, horflip True: CER 0.8750, WER 1.333333
 lm=None, beam=0, bs=1, test_aug:0, horflip True: CER 0.8750, WER 1.333333
+lm=None, beam=0, bs=1, test_aug:0, horflip True: CER 0.8750, WER 1.333333
