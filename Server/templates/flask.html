@@ -1,11 +1,13 @@
 <html>
 <head>
 <title>Lip Reading</title>
-<!-- Materialize CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<!-- Regular CSS -->
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='flask.css') }}">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <!-- Materialize CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Regular CSS -->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='flask.css') }}">
 </head>
 <body>
 
@@ -23,7 +25,7 @@
   <input type="file" hidden id="toFlask">
   <div class="row">
     <button hidden type="submit" id = "go"></button>
-    <div class="col s3" id="video-buttons">
+    <div id="video-buttons">
       <a class="waves-effect waves-light btn" id='request'>Request Camera<i class="material-icons right">camera_alt</i></a>
       <a class="waves-effect waves-light btn" id='start' onclick='startRecording()'>Start Recording<i class="material-icons right">videocam</i></a>
       <a class="waves-effect waves-light btn" id='stop' onclick='stopRecording()' hidden>Stop Recording<i class="material-icons right">videocam_off</i></a>
@@ -32,12 +34,19 @@
       Start Recording <i class="material-icons right">videocam</i>
     </button>
     <button id='stop' class='btn' onclick = "stopRecording()" hidden>-->
-      Stop Recording <i class="material-icons right">videocam_off</i>
+      <!--Stop Recording <i class="material-icons right">videocam_off</i> -->
     </button>
     <video id='video' autoplay></video>
-    <div id='transcript'>
-      Transcript:
-      <br /><span id='transcript-txt'></span>
+    <div id='transcript' class="card blue-grey">
+      <div class="card-content white-text">
+        <span class="card-title">Transcript</span>
+        <br /><span id='transcript-txt'></span>
+        <br>
+        <br>
+        <button class="waves-effect waves-light btn" onclick="textToSpeech(document.getElementById('transcript-txt').textContent);">
+          Read Transcript
+        </button>
+      </div>
     </div>
     <ul id='ul'>
       Downloads List:
