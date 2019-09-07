@@ -13,7 +13,7 @@
     <div class="nav-wrapper orange lighten-1">
       <a href="#" class="brand-logo">Logo</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="#">Film<i class="material-icons">videocam</i></a></li>
+        <li><a href="#">Film</a><i class="material-icons">videocam</i></li>
         <li><a href="#">Transcript</a></li>
         <li><a href="#">About</a></li>
       </ul>
@@ -24,13 +24,15 @@
   <button hidden type="submit" class='btn-hidden' id = "go"></button>
   </form>
   <button id='request' class='btn'>
-    Request Camera
+    Request Camera <i class="material-icons">camera_alt</i>
   </button>
+  <a class="waves-effect waves-light btn"><i class="material-icons left">cloud</i>button</a>
+
   <button id='start' class='btn' onclick = "startRecording()">
-    Start Recording
+    Start Recording <i class="material-icons large">videocam</i>
   </button>
   <button id='stop' class='btn' onclick = "stopRecording()" hidden>
-    Stop Recording
+    Stop Recording <i class="material-icons large">videocam_off</i>
   </button>
   <video id='video' autoplay></video>
   <div id='transcript'>
