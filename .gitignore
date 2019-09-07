@@ -2,3 +2,8 @@
 __pycache__
 uploads/
 /uploads
+<<<<<<< HEAD
+=======
+*.data*
+*.ckpt*
+>>>>>>> 206d8da5b46f18b038c12c8ac56014dd3acfae10
