@@ -76,3 +76,13 @@ function stopRecording() {
   stopBtn.disabled = true;
 }
 
+function textToSpeech(text) {
+  var request = new XMLHttpRequest();
+  request.open("GET", "http://127.0.0.1:5000/voice");
+  request.onload = function() {
+    // I don't think this will actually work
+    var audio = new Audio(this.responseText);
+    audio.play();
+  }
+  request.send(text);
+}
