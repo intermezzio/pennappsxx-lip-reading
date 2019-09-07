@@ -2,13 +2,13 @@
 
 Repository Structure:
 
--root
---ML
----algorithms
----data
---Frontend
----App
----Web
---Scraper
----code
----data
+root
+ ML
+  algorithms
+  data
+ Frontend
+  App
+  Web
+ Scraper
+  code
+  data
