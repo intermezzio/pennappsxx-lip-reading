@@ -2,3 +2,12 @@
  *
  */
 
+#transcript {
+  width: 600px;
+  margin: 0 auto;
+}
+
+#video-buttons {
+  text-align: center;
+  margin: 20px;
+}
