@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def basicHTML():
-    return flask.render_template("flask.html")
+    return render_template("flask.html")
 
 @app.route('/form', methods=['POST'])
 def get_data():
