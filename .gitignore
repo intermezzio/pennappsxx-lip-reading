@@ -1,0 +1,6 @@
+.pyc
+__pycache__
+uploads/
+/uploads
+*.data*
+*.ckpt*

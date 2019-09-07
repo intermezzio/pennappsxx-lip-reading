@@ -1,0 +1,51 @@
+<html>
+<head>
+<title>Lip Reading</title>
+<!-- Materialize CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!-- Regular CSS -->
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='flask.css') }}">
+</head>
+<body>
+
+<div id="container">
+  <nav>
+    <div class="nav-wrapper orange lighten-1">
+      <a href="#" class="brand-logo">Logo</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="#">Film</a></li>
+        <li><a href="#">Transcript</a></li>
+        <li><a href="#">About</a></li>
+      </ul>
+    </div>
+  </nav>
+  <input type="file" hidden id="toFlask">
+  <div class="row">
+    <button hidden type="submit" id = "go"></button>
+    <div class="col s3" id="video-buttons">
+      <a class="waves-effect waves-light btn" id='request'>Request Camera<i class="material-icons right">camera_alt</i></a>
+      <a class="waves-effect waves-light btn" id='start' onclick='startRecording()'>Start Recording<i class="material-icons right">videocam</i></a>
+      <a class="waves-effect waves-light btn" id='stop' onclick='stopRecording()' hidden>Stop Recording<i class="material-icons right">videocam_off</i></a>
+    </div>
+    <!--<button id='start' class='btn' onclick = "startRecording()">
+      Start Recording <i class="material-icons right">videocam</i>
+    </button>
+    <button id='stop' class='btn' onclick = "stopRecording()" hidden>-->
+      Stop Recording <i class="material-icons right">videocam_off</i>
+    </button>
+    <video id='video' autoplay></video>
+    <div id='transcript'>
+      Transcript:
+      <br /><span id='transcript-txt'></span>
+    </div>
+    <ul id='ul'>
+      Downloads List:
+    </ul>
+  </div>
+</div>
+<!-- Materialize JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='flask.js') }}"></script>
+</body>
+</html>
