@@ -16,3 +16,16 @@
   text-align: center;
   margin-bottom: 20px;
 }
+
+#video {
+  border-radius: 5px;
+}
+
+#target {
+  position: absolute;
+  width: 40px;
+  left: calc(50% - 20px);
+  top: 50%;
+  color: red;
+  font-size: 500%;
+}
