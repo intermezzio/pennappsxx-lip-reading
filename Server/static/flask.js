@@ -176,3 +176,24 @@ function textToSpeech(text) {
   }
   request.send(formData);
 }
+
+function userTextToSpeech(text) {
+  var user = document.getElementById("user").value;
+  var context = new AudioContext();
+
+  var formData = new FormData();
+  formData.append("string", text);
+  formData.append("user", user);
+
+  var request = new XMLHttpRequest();
+  request.open("POST", URL + "/myvoice");
+  request.responseType = "arraybuffer";
+  request.onload = function() {
+    context.decodeAudioData(request.response, buffer => {
+      var source = context.createBufferSource();
+      source.buffer = buffer;
+      source.connect(context.destination);
+      source.start(0);
+    });
+  }
+  request.send(formData);
