@@ -178,6 +178,7 @@ function textToSpeech(text) {
 }
 
 function userTextToSpeech(text) {
+  load.style.visibility = "visible";
   var user = document.getElementById("user").value;
   var context = new AudioContext();
 
@@ -190,6 +191,7 @@ function userTextToSpeech(text) {
   request.responseType = "arraybuffer";
   request.onload = function() {
     context.decodeAudioData(request.response, buffer => {
+      load.style.visibility = "hidden";
       var source = context.createBufferSource();
       source.buffer = buffer;
       source.connect(context.destination);
