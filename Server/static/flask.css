@@ -35,6 +35,27 @@
   border-radius: 5px;
 }
 
+@media only screen and (max-width: 1025px) {
+#target {
+  position: absolute;
+  width: 40px;
+  left: calc(50% - 20px);
+  top: 50%;
+  color: #ffa726;
+  font-size: 500%;
+  display: none;
+}
+
+#box {
+  border: 3px solid #ffa726;
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  left: calc(50% - 150px);
+  top: calc(50% - 150px);
+  display: none;
+}
+}
 @media only screen and (min-width: 1025px) {
 #target {
   position: absolute;
