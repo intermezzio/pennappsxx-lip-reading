@@ -30,6 +30,12 @@ if __name__ == '__main__':
         "overhead but allows to save some GPU memory for lower-end GPUs.")
     parser.add_argument("--no_sound", action="store_true", help=\
         "If True, audio won't be played.")
+    parser.add_argument("-n", "--name", type=string,
+                        default="",
+                        help="Name of audio file")
+   parser.add_argument("-t", "--text", type=string,
+                        default="",
+                        help="Text String")
     args = parser.parse_args()
     print_args(args, parser)
     if not args.no_sound:
@@ -69,7 +75,7 @@ if __name__ == '__main__':
             # Get the reference audio filepath
             message = "Reference voice: enter an audio filepath of a voice to be cloned (mp3, " \
                       "wav, m4a, flac, ...):\n"
-            in_fpath = Path(input(message).replace("\"", "").replace("\'", ""))
+            in_fpath = Path(str("../Server/proc_audio_upload"+args.name).replace("\"", "").replace("\'", ""))
             
             
             ## Computing the embedding
@@ -92,7 +98,7 @@ if __name__ == '__main__':
             
             
             ## Generating the spectrogram
-            text = input("Write a sentence (+-20 words) to be synthesized:\n")
+            text = args.text
             
             # The synthesizer works in batch, so you need to put your data in a list or numpy array
             texts = [text]

@@ -65,8 +65,8 @@ def get_voice():
     try:
         textAndVoice = string.split("voice=")
         text = textAndVoice[0]
-        voice = textAndVoice[1]
-        os.system("/home/ubuntu/anaconda3/envs/tensorflow_p36/bin/python3 ../ML-Audio/pennapp_audio.py --no_sound -n {} -t {}".format(voice,text))
+        voices = textAndVoice[1]
+        os.system("/home/ubuntu/anaconda3/envs/tensorflow_p36/bin/python3 ../ML-Audio/pennapp_audio.py --no_sound -n {} -t {}".format(voices,text))
     except:
         text_input = texttospeech.types.SynthesisInput(text=string)
         audio = client.synthesize_speech(text_input, voice, audio_config)
