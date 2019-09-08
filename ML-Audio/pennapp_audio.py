@@ -17,23 +17,23 @@ if __name__ == '__main__':
         formatter_class=argparse.ArgumentDefaultsHelpFormatter
     )
     parser.add_argument("-e", "--enc_model_fpath", type=Path, 
-                        default="encoder/saved_models/pretrained.pt",
+                        default="../ML-Audio/encoder/saved_models/pretrained.pt",
                         help="Path to a saved encoder")
     parser.add_argument("-s", "--syn_model_dir", type=Path, 
-                        default="synthesizer/saved_models/logs-pretrained/",
+                        default="../ML-Audio/synthesizer/saved_models/logs-pretrained/",
                         help="Directory containing the synthesizer model")
     parser.add_argument("-v", "--voc_model_fpath", type=Path, 
-                        default="vocoder/saved_models/pretrained/pretrained.pt",
+                        default="../ML-Audio/vocoder/saved_models/pretrained/pretrained.pt",
                         help="Path to a saved vocoder")
     parser.add_argument("--low_mem", action="store_true", help=\
         "If True, the memory used by the synthesizer will be freed after each use. Adds large "
         "overhead but allows to save some GPU memory for lower-end GPUs.")
     parser.add_argument("--no_sound", action="store_true", help=\
         "If True, audio won't be played.")
-    parser.add_argument("-n", "--name", type=string,
+    parser.add_argument("-n", "--name", type=str,
                         default="",
                         help="Name of audio file")
-   parser.add_argument("-t", "--text", type=string,
+    parser.add_argument("-t", "--text", type=str,
                         default="",
                         help="Text String")
     args = parser.parse_args()
@@ -75,7 +75,8 @@ if __name__ == '__main__':
             # Get the reference audio filepath
             message = "Reference voice: enter an audio filepath of a voice to be cloned (mp3, " \
                       "wav, m4a, flac, ...):\n"
-            in_fpath = Path(str("../Server/proc_audio_upload"+args.name).replace("\"", "").replace("\'", ""))
+            print(str("../Server/proc_audio_uploads/"+args.name))
+            in_fpath = Path(str("../Server/proc_audio_uploads/"+args.name+".mp3").replace("\"", "").replace("\'", ""))
             
             
             ## Computing the embedding
@@ -134,7 +135,7 @@ if __name__ == '__main__':
                                      synthesizer.sample_rate)
             num_generated += 1
             print("\nSaved output as %s\n\n" % fpath)
-            
+            break            
             
         except Exception as e:
             print("Caught exception: %s" % repr(e))

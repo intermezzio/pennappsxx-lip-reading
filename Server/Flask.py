@@ -64,12 +64,15 @@ def get_voice():
     print(request.form.get('string'))
     string = request.form.get('string')
     print(string)
-    try:
+    if "voice=" in string:
         textAndVoice = string.split("voice=")
         text = textAndVoice[0]
         voices = textAndVoice[1]
         os.system("/home/ubuntu/anaconda3/envs/tensorflow_p36/bin/python3 ../ML-Audio/pennapp_audio.py --no_sound -n {} -t {}".format(voices,text))
-    except:
+        response.headers['Content-Type'] = 'audio/wav'
+        response.headers['Content-Disposition'] = 'attachment; filename=voice.wav'
+        return response
+    else:
         text_input = texttospeech.types.SynthesisInput(text=string)
         audio = client.synthesize_speech(text_input, voice, audio_config)
 
@@ -88,6 +91,6 @@ def purge():
 
 if __name__ == '__main__':
     if _LOCAL:
-        app.run(debug=True, host='0.0.0.0',port=80)
+        app.run(debug=True, host='0.0.0.0',port=443)
     else:
-        app.run(debug=True, host='0.0.0.0',port=80, ssl_context=context)
+        app.run(debug=True, host='0.0.0.0',port=443, ssl_context=context)
