@@ -4,6 +4,12 @@ from flask import Flask, Response, request, render_template, make_response
 from werkzeug.utils import secure_filename
 from google.cloud import texttospeech
 
+# highly sketch SSL stuff
+from ssl import SSLContext, PROTOCOL_TLS
+context = SSLContext(protocol=PROTOCOL_TLS)
+context.load_cert_chain('/etc/letsencrypt/live/speakinto.space/fullchain.pem', keyfile='/etc/letsencrypt/live/speakinto.space/privkey.pem')
+
+
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="../credentials.json"
 # set up Google Cloud Text to Speech client
 client = texttospeech.TextToSpeechClient()
@@ -38,10 +44,11 @@ def get_data():
 @app.route('/formaud', methods=['POST'])
 def get_data2():
     file = request.files['clip']
-    file.save(os.path.join(UPLOAD_DIR, file.filename))
+    file.save(os.path.join(AUDIO_UPLOAD_DIR, file.filename))
     print("Converting")
+    os.system("ffmpeg -y -i "+ os.path.join(AUDIO_UPLOAD_DIR, file.filename) + ' ./proc_audio_uploads/'+Path(os.path.join(AUDIO_UPLOAD_DIR, file.filename)).stem + ".mp3")
     os.system("python ../ML/main.py --lip_model_path ../ML/models/lrs2_lip_model --gpu_id 0 --data_list ../ML/media/example/demo_list.txt --data_path ../ML/media/example")
-    return str(answer)
+    return "answer"
 
 @app.route('/clear', methods=['GET'])
 def clear_uploads():
@@ -72,4 +79,4 @@ def purge():
     os.system("mkdir uploads")
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0',port=80)
+    app.run(debug=True, host='0.0.0.0',port=443, ssl_context=context)
