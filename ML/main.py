@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 from __future__ import print_function
-
+import string
 import os
 
 import editdistance
@@ -111,7 +111,7 @@ def validation_loop(sess, g, n_batches, chars=None, val_gen = None, tb_writer=No
 
     # use last loss
     gt_sents = [ ''.join([ chars[cid] for cid in prr]).strip() for prr in y]
-    gt_words = [ sent.split('-') for sent in gt_sents]
+    gt_words = [ sent.split(' ') for sent in gt_sents]
 
     def decode_preds_to_chars(decoding):
       return ''.join([ chars[cid] for cid in decoding]).strip()
@@ -131,10 +131,10 @@ def validation_loop(sess, g, n_batches, chars=None, val_gen = None, tb_writer=No
     if config.print_predictions:
       print()
       for gts, prs, wr in zip(gt_sents, pred_sentences, edists):
-        print ('(wer={:.1f}) {} --> {}'.format(wr*100, 'Analysis', prs))
+        print ('(wer={:.1f}) {} --> {}'.format(wr*100, 'Analysis', prs.replace ("-", " ")))
         open('../ML/prediction.txt', 'w').close()
         text_file = open("../ML/prediction.txt", "w")
-        text_file.write(prs)
+        text_file.write(prs.replace ("-", " "))
         text_file.close()
     progbar.update(i+1, [ ('cer',cer), ('wer', wer) ] )
     Wer.append(wer)
