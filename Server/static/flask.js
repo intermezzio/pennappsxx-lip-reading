@@ -1,5 +1,5 @@
-const URL = 'http://127.0.0.1:5000';
-// const URL = 'http://3.210.181.96:5000';
+//const URL = 'http://127.0.0.1:5000';
+const URL = 'http://3.210.181.96:5000';
 
 
 var video, reqBtn, startBtn, stopBtn, ul, stream, recorder, timer;
@@ -43,7 +43,7 @@ function startRecording() {
   document.getElementById('transcript-txt').value="";
   // stopBtn.removeAttribute('disabled');
   // startBtn.disabled = true;
-  setTimeout(sendNew, 5000)
+  setTimeout(sendNew, 8000)
 
   startBtn.classList.toggle("disabled");
   stopBtn.classList.toggle("disabled");
@@ -65,7 +65,7 @@ function sendNew(){
   };
   recorder.stop();
   recorder.start();
-  timer = setTimeout(sendNew, 3000)
+  timer = setTimeout(sendNew, 8000)
 }
 
 
