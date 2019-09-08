@@ -44,10 +44,10 @@
     <div id='transcript' class="card blue-grey">
       <div class="card-content white-text">
         <span class="card-title">Transcript</span>
-        <br /><span id='transcript-txt'></span>
+        <br /><textarea id='transcript-txt' class="white-text" spellcheck="false" contenteditable="true"></textarea>
         <br>
         <br>
-        <button class="waves-effect waves-light btn" onclick="textToSpeech(document.getElementById('transcript-txt').textContent);">
+        <button class="waves-effect waves-light btn" onclick="textToSpeech(document.getElementById('transcript-txt').value);">
           Read Transcript
         </button>
       </div>
