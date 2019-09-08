@@ -118,7 +118,7 @@ def validation_loop(sess, g, n_batches, chars=None, val_gen = None, tb_writer=No
 
     pred_sentences = [ decode_preds_to_chars(prr) for prr in preds]
 
-    pred_words = [sent.split('-') for sent in  pred_sentences]
+    pred_words = [sent.split(' ') for sent in  pred_sentences]
 
     edists = [rel_edist(gt, dec_str) for gt, dec_str in zip(gt_words, pred_words)]
     wer = np.mean(edists)
