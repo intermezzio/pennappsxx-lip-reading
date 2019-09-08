@@ -4,10 +4,12 @@ from flask import Flask, Response, request, render_template, make_response
 from werkzeug.utils import secure_filename
 from google.cloud import texttospeech
 
-# highly sketch SSL stuff
-from ssl import SSLContext, PROTOCOL_TLS
-context = SSLContext(protocol=PROTOCOL_TLS)
-context.load_cert_chain('/etc/letsencrypt/live/speakinto.space/fullchain.pem', keyfile='/etc/letsencrypt/live/speakinto.space/privkey.pem')
+_LOCAL = False
+if not _LOCAL:
+    # highly sketch SSL stuff
+    from ssl import SSLContext, PROTOCOL_TLS
+    context = SSLContext(protocol=PROTOCOL_TLS)
+    context.load_cert_chain('/etc/letsencrypt/live/speakinto.space/fullchain.pem', keyfile='/etc/letsencrypt/live/speakinto.space/privkey.pem')
 
 
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="../credentials.json"
@@ -79,4 +81,7 @@ def purge():
     os.system("mkdir uploads")
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0',port=443, ssl_context=context)
+    if _LOCAL:
+        app.run(debug=True, host='0.0.0.0',port=80)
+    else:
+        app.run(debug=True, host='0.0.0.0',port=80, ssl_context=context)

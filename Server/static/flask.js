@@ -1,10 +1,12 @@
-// const URL = 'http://127.0.0.1:5000;
+// const URL = 'http://127.0.0.1:80;
 const URL = 'https://speakinto.space';
 
 
 var video, reqBtn, startBtn, stopBtn, ul, stream, recorder, timer, recorderaud;
 video = document.getElementById('video');
 var videoWidth, videoHeight;
+document.getElementById("video").volume = 0;
+
 var getVideoSize = function() {
     videoWidth = video.videoWidth;
     videoHeight = video.videoHeight;
