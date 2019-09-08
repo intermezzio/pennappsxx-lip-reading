@@ -47,8 +47,8 @@ def get_data2():
     file.save(os.path.join(AUDIO_UPLOAD_DIR, file.filename))
     print("Converting")
     os.system("ffmpeg -y -i "+ os.path.join(AUDIO_UPLOAD_DIR, file.filename) + ' ./proc_audio_uploads/'+Path(os.path.join(AUDIO_UPLOAD_DIR, file.filename)).stem + ".mp3")
-    os.system("python ../ML/main.py --lip_model_path ../ML/models/lrs2_lip_model --gpu_id 0 --data_list ../ML/media/example/demo_list.txt --data_path ../ML/media/example")
-    return "answer"
+#    os.system("/home/ubuntu/anaconda3/envs/tensorflow_p36/bin/python3 ../ML-Audio/pennapp_audio.py --no_sound ")
+    return "Saved Audio"
 
 @app.route('/clear', methods=['GET'])
 def clear_uploads():
@@ -62,14 +62,20 @@ def get_voice():
     print(request.form.get('string'))
     string = request.form.get('string')
     print(string)
-    text_input = texttospeech.types.SynthesisInput(text=string)
-    audio = client.synthesize_speech(text_input, voice, audio_config)
+    try:
+        textAndVoice = string.split("voice=")
+        text = textAndVoice[0]
+        voice = textAndVoice[1]
+        os.system("/home/ubuntu/anaconda3/envs/tensorflow_p36/bin/python3 ../ML-Audio/pennapp_audio.py --no_sound -n {} -t {}".format(voice,text))
+    except:
+        text_input = texttospeech.types.SynthesisInput(text=string)
+        audio = client.synthesize_speech(text_input, voice, audio_config)
 
-    response = make_response(audio.audio_content)
-    response.headers['Content-Type'] = 'audio/wav'
-    response.headers['Content-Disposition'] = 'attachment; filename=voice.wav'
+        response = make_response(audio.audio_content)
+        response.headers['Content-Type'] = 'audio/wav'
+        response.headers['Content-Disposition'] = 'attachment; filename=voice.wav'
 
-    return response
+        return response
 
 #TODO: Prepend a session/computer specific identifier to delete only the session specific files, for scaling.
 
