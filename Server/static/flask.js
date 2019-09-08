@@ -1,5 +1,5 @@
-const URL = 'http://127.0.0.1:5000';
-// const URL = 'http://3.210.181.96:5000';
+// const URL = 'http://127.0.0.1:5000';
+const URL = 'http://3.210.181.96:5000';
 
 
 var video, reqBtn, startBtn, stopBtn, ul, stream, recorder, timer;
