@@ -92,7 +92,6 @@ function stopRecording() {
 //   stopBtn.disabled = true;
   startBtn.classList.toggle("disabled");
   stopBtn.classList.toggle("disabled");
-  video.srcObject = null;
   stopBtn.disabled = true;
   video.videoHeight=videoHeight
   video.videoWidth=videoWidth
