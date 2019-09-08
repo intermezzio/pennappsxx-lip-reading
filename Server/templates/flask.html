@@ -29,7 +29,7 @@
   <div class="row">
     <button hidden type="submit" id = "go"></button>
     <div id="video-buttons">
-      <a class="waves-effect waves-light btn" id='request'>Request Camera<i class="material-icons right">camera_alt</i></a>
+      <a class="waves-effect waves-light btn" id='request'>Authorize Media<i class="material-icons right">camera_alt</i></a>
       <a class="waves-effect waves-light btn disabled" id='start' onclick='startRecording()'>Start Recording<i class="material-icons right">videocam</i></a>
       <a class="waves-effect waves-light btn disabled" id='stop' onclick='stopRecording()' hidden>Stop Recording<i class="material-icons right">videocam_off</i></a>
     </div>
@@ -56,6 +56,8 @@
         <a class="waves-effect waves-light btn" onclick="textToSpeech(document.getElementById('transcript-txt').value);">
           Read Transcript
         </a>
+        <a class="waves-effect waves-light btn" onclick="">Read In Your Voice</a>
+        <input type="text" id="user" placeholder="Your Name">
       </div>
     </div>
     <br />
@@ -69,6 +71,13 @@
     <div class="card orange lighten-1">
       <div class="card-content white-text">
         <h4>Instructions</h4>
+        <h5>Mouth Reading</h5>
+        <p>The mouth reading process films your mouth while you speak, and that speech is transcribed into text. To start the video, you first need to authorize use of your webcam. All data on our servers is anonymous, and video data is irretrievable after you finish using it. Click the "Authorize Media" button to enable it.</p>
+        <br />
+        <p>When you are ready to record, press the "Start Recording" button. Then, press the "Stop Recording" button when you're done. After the server takes some time to load, you will see a transcription of what you mouthed.</p>
+        <br />
+        <h5>Voice Generating</h5>
+        <p>This service also uses machine learning to learn your voice. Press the "Start Audio" button to start recording your voice. After you speak about 20 words, press "Stop Audio". Now, type whatever you want in the Transcript section and press "Read in Your Voice" to hear the words in your voice.</p>
       </div>
     </div>
 
