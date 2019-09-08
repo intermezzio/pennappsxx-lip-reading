@@ -68,7 +68,7 @@ def get_voice():
         textAndVoice = string.split("voice=")
         text = textAndVoice[0]
         voices = textAndVoice[1]
-        os.system("/home/ubuntu/anaconda3/envs/tensorflow_p36/bin/python3 ../ML-Audio/pennapp_audio.py --no_sound -n {} -t {}".format(voices,text))
+        os.system('/home/ubuntu/anaconda3/envs/tensorflow_p36/bin/python3 ../ML-Audio/pennapp_audio.py --no_sound -n {} -t "{}"'.format(voices,text))
         response = make_response("../Server/demo_output_00.wav")
         response.headers['Content-Type'] = 'audio/wav'
         response.headers['Content-Disposition'] = 'attachment; filename=demo_output_00.wav'
