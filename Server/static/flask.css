@@ -37,6 +37,6 @@
   height: 300px;
   position: absolute;
   left: calc(50% - 150px);
-  top: calc(50% - 150px + 50px);
+  top: calc(50% - 150px + 60px);
   display: none;
 }
