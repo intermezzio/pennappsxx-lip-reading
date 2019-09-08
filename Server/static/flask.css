@@ -35,6 +35,7 @@
   border-radius: 5px;
 }
 
+@media only screen and (min-width: 1025px) {
 #target {
   position: absolute;
   width: 40px;
@@ -53,6 +54,7 @@
   left: calc(50% - 150px);
   top: calc(50% - 150px + 60px);
   display: none;
+}
 }
 
 table {
