@@ -58,6 +58,7 @@ function sendNew(){
     var request = new XMLHttpRequest();
     request.open("POST", URL + "/form");
     request.onload = function() {
+      console.log(this.responseText);
       document.getElementById('transcript-txt').value=this.responseText;
     }
     request.send(formData);
@@ -79,6 +80,7 @@ function stopRecording() {
     request.open("POST", URL + "/form");
     request.onload = function() {
       console.log(this.responseText);
+      document.getElementById('transcript-txt').value = this.responseText;
     }
     request.send(formData);
   };
