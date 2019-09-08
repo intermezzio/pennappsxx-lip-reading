@@ -20,46 +20,58 @@
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li><a href="#">Film</a></li>
           <li><a href="#transcript">Transcript</a></li>
+          <li><a href="#instructions">Instructions</a></li>
           <li><a href="#about">About</a></li>
         </ul>
       </div>
     </nav>
   </div>
-  <input type="file" hidden id="toFlask">
   <div class="row">
     <button hidden type="submit" id = "go"></button>
     <div id="video-buttons">
       <a class="waves-effect waves-light btn" id='request'>Request Camera<i class="material-icons right">camera_alt</i></a>
       <a class="waves-effect waves-light btn disabled" id='start' onclick='startRecording()'>Start Recording<i class="material-icons right">videocam</i></a>
       <a class="waves-effect waves-light btn disabled" id='stop' onclick='stopRecording()' hidden>Stop Recording<i class="material-icons right">videocam_off</i></a>
-      <a class="waves-effect waves-light btn disabled" id='startaud' onclick='startAudio()'>Start Audio<i class="material-icons right">mic</i></a>
-      <a class="waves-effect waves-light btn disabled" id='stopaud' onclick='stopAudio()' hidden>Stop Audio<i class="material-icons right">mic_off</i></a>
     </div>
     <!--<button id='start' class='btn' onclick = "startRecording()">
       Start Recording <i class="material-icons right">videocam</i>
     </button>
     <button id='stop' class='btn' onclick = "stopRecording()" hidden>-->
       <!--Stop Recording <i class="material-icons right">videocam_off</i> -->
-    <input type = "text" id = "user"></input>
     <div id="video-wrap">
       <div id="box"></div>
       <div id="target">+</div>
       <video id='video' height=480 width=640 background-color=black autoplay></video>
     </div>
-    <div id='transcript' class="card blue-grey">
+    <br id="transcript" /><br />
+    <div id='transcript-card' class="card blue-grey">
       <div class="card-content white-text">
         <span class="card-title">Transcript</span>
         <br /><textarea id='transcript-txt' class="white-text" spellcheck="false" contenteditable="true"></textarea>
         <br>
         <br>
-        <button class="waves-effect waves-light btn" onclick="textToSpeech(document.getElementById('transcript-txt').value);">
+        <a class="waves-effect waves-light btn" onclick="textToSpeech(document.getElementById('transcript-txt').value);">
           Read Transcript
-        </button>
+        </a>
       </div>
     </div>
-    <br /><br /><br />
-    <div id="about" class="card orange lighten-1">
-      <div class="card-content white-text bold">
+    <br />
+    <div class="center">
+      <a class="waves-effect waves-light btn disabled" id='startaud' onclick='startAudio()'>Start Audio<i class="material-icons right">mic</i></a>
+      <a class="waves-effect waves-light btn disabled" id='stopaud' onclick='stopAudio()' hidden>Stop Audio<i class="material-icons right">mic_off</i></a>
+      <input type="file" hidden id="toFlask">
+    </div>
+
+    <br id="instructions" /><br />
+    <div class="card orange lighten-1">
+      <div class="card-content white-text">
+        <h4>Instructions</h4>
+      </div>
+    </div>
+
+    <br id="about" /><br />    
+    <div class="card teal">
+      <div class="card-content white-text">
         <h4>About</h4>
         <br /><span id="about-text" class="white-text">
           <p>Speak Into Space was born on September 7, 2019 at the 20th Pennapps hackathon. This project was designed to extend our abilities to communicate simply through mouthing words. The first part of this project lets you generate statements by mouthing words. After this, the second part of the project takes your inputted text and generates audio for the text in your own voice.</p>
