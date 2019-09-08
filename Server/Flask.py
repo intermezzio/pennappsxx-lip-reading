@@ -79,8 +79,9 @@ def myvoice():
     string = request.form.get('string')
     user = request.form.get('user')
     os.system('/home/ubuntu/anaconda3/envs/tensorflow_p36/bin/python3 ../ML-Audio/pennapp_audio.py --no_sound -n {} -t "{}"'.format(user, string))
+    # os.system('sox demo_output_00.wav demo_output_00_clean.wav')  # clean it up for Firefox
     return send_file(
-	 '../Server/demo_output_00.wav', 
+	 '../Server/demo_output_00_clean.wav', 
 	 mimetype="audio/wav", 
 	 as_attachment=True, 
 	 attachment_filename="voice.wav")
