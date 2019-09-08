@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+from pathlib import Path
 import os
 from flask import Flask, Response, request, render_template, make_response
 from werkzeug.utils import secure_filename
@@ -25,8 +26,15 @@ def basicHTML():
 def get_data():
     file = request.files['clip']
     file.save(os.path.join(UPLOAD_DIR, file.filename))
-    #answer=COMPUTE IT
-    return "answer"
+    print("Converting")
+    os.system("ffmpeg -y -i "+ os.path.join(UPLOAD_DIR, file.filename) + ' -qscale 0 -filter:v "crop=300:300" -s 160x160 -r 25 ./proc_uploads/'+Path(os.path.join(UPLOAD_DIR, file.filename)).stem + ".mp4")
+    os.system("mv ./proc_uploads/"+ Path(os.path.join(UPLOAD_DIR, file.filename)).stem + ".mp4  ../ML/media/example/demo.mp4")
+    os.system("python ../ML/main.py --lip_model_path ../ML/models/lrs2_lip_model --gpu_id 0 --data_list ../ML/media/example/demo_list.txt --data_path ../ML/media/example")
+    pred = open("../ML/prediction.txt","r+") 
+    answer = pred.read() 
+    f = open("video.txt", "a")
+    f.write(str(file.filename) + "-------->" + answer)
+    return str(answer)
 
 @app.route('/clear', methods=['GET'])
 def clear_uploads():

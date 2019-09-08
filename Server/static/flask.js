@@ -1,9 +1,17 @@
-const URL = 'http://127.0.0.1:5000';
-// const URL = 'http://3.210.181.96:5000';
+// const URL = 'http://127.0.0.1:5000';
+const URL = 'http://3.210.181.96:5000';
 
 
 var video, reqBtn, startBtn, stopBtn, ul, stream, recorder, timer;
 video = document.getElementById('video');
+var videoWidth, videoHeight;
+var getVideoSize = function() {
+    videoWidth = video.videoWidth;
+    videoHeight = video.videoHeight;
+    video.removeEventListener('loadedmetadata', getVideoSize, false);
+    console.log("TEST")
+};
+video.addEventListener('loadedmetadata', getVideoSize, false);
 reqBtn = document.getElementById('request');
 startBtn = document.getElementById('start');
 stopBtn = document.getElementById('stop');
@@ -84,6 +92,11 @@ function stopRecording() {
 //   stopBtn.disabled = true;
   startBtn.classList.toggle("disabled");
   stopBtn.classList.toggle("disabled");
+  video.srcObject = null;
+  stopBtn.disabled = true;
+  video.videoHeight=videoHeight
+  video.videoWidth=videoWidth
+  console.log("DONE")
 }
 
 function textToSpeech(text) {
