@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 from pathlib import Path
 import os
 from flask import Flask, Response, request, render_template, make_response
