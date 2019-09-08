@@ -53,3 +53,6 @@ lm=None, beam=0, bs=1, test_aug:0, horflip True: CER 0.6875, WER 1.000000
 lm=None, beam=0, bs=1, test_aug:0, horflip True: CER 0.7500, WER 1.000000
 lm=None, beam=0, bs=1, test_aug:0, horflip True: CER 0.6875, WER 1.000000
 lm=None, beam=0, bs=1, test_aug:0, horflip True: CER 0.5625, WER 1.000000
+lm=None, beam=0, bs=1, test_aug:0, horflip True: CER 0.6250, WER 1.000000
+lm=None, beam=0, bs=1, test_aug:0, horflip True: CER 1.0625, WER 1.000000
+lm=None, beam=0, bs=1, test_aug:0, horflip True: CER 1.6875, WER 1.000000

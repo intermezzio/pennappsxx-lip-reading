@@ -1,9 +1,10 @@
 from pathlib import Path
 import os
-from flask import Flask, Response, request, render_template, make_response
+from flask import Flask, Response, request, render_template, make_response, send_file
 from werkzeug.utils import secure_filename
 from google.cloud import texttospeech
-
+from scipy.io import wavfile
+import wave
 _LOCAL = False
 if not _LOCAL:
     # highly sketch SSL stuff
@@ -69,10 +70,12 @@ def get_voice():
         text = textAndVoice[0]
         voices = textAndVoice[1]
         os.system('/home/ubuntu/anaconda3/envs/tensorflow_p36/bin/python3 ../ML-Audio/pennapp_audio.py --no_sound -n {} -t "{}"'.format(voices,text))
-        response = make_response("../Server/demo_output_00.wav")
-        response.headers['Content-Type'] = 'audio/wav'
-        response.headers['Content-Disposition'] = 'attachment; filename=demo_output_00.wav'
-        return response
+        path_to_file = "demo_output_00.wav"
+        return send_file(
+         path_to_file, 
+         mimetype="audio/wav", 
+         as_attachment=True, 
+         attachment_filename="voice.wav")
     else:
         text_input = texttospeech.types.SynthesisInput(text=string)
         audio = client.synthesize_speech(text_input, voice, audio_config)
