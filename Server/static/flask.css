@@ -2,6 +2,13 @@
  *
  */
 
+#logo {
+  height: 60px;
+  width: auto;
+  margin: 2.5px 10px;
+  vertical-align: center;
+}
+
 #transcript {
   width: 600px;
   margin: 0 auto;
@@ -20,6 +27,7 @@
 
 #video-wrap {
   text-align: center;
+  height: calc(100vh-100px);
   margin-bottom: 20px;
 }
 
@@ -45,4 +53,13 @@
   left: calc(50% - 150px);
   top: calc(50% - 150px + 60px);
   display: none;
+}
+
+table {
+  color: white;
+}
+
+table a, p a {
+  color: white;
+  text-decoration: underline;
 }
