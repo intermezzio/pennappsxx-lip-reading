@@ -3,6 +3,7 @@
 <title>Lip Reading</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
+  <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
   <!-- Materialize CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -12,16 +13,18 @@
 <body>
 
 <div id="container">
-  <nav>
-    <div class="nav-wrapper orange lighten-1">
-      <a href="#" class="brand-logo">Logo</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="#">Film</a></li>
-        <li><a href="#">Transcript</a></li>
-        <li><a href="#">About</a></li>
-      </ul>
-    </div>
-  </nav>
+  <div class="navbar-fixed">
+    <nav>
+      <div class="nav-wrapper orange lighten-1">
+        <a href="#" class="brand-logo"><img id="logo" class="left" src="{{ url_for('static', filename='favicon.png') }}">  Speak Into Space</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="#">Film</a></li>
+          <li><a href="#transcript">Transcript</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
   <input type="file" hidden id="toFlask">
   <div class="row">
     <button hidden type="submit" id = "go"></button>
@@ -34,8 +37,8 @@
       Start Recording <i class="material-icons right">videocam</i>
     </button>
     <button id='stop' class='btn' onclick = "stopRecording()" hidden>-->
-      <!--Stop Recording <i class="material-icons right">videocam_off</i> -->
-    </button>
+      <!--Stop Recording <i class="material-icons right">videocam_off</i>
+    </button> -->
     <div id="video-wrap">
       <div id="box"></div>
       <div id="target">+</div>
@@ -52,7 +55,36 @@
         </button>
       </div>
     </div>
+    <br /><br /><br />
+    <div id="about" class="card orange lighten-1">
+      <div class="card-content white-text bold">
+        <h4>About</h4>
+        <br /><span id="about-text" class="white-text">
+          <p>Speak Into Space was born on September 7, 2019 at the 20th Pennapps hackathon. This project was designed to extend our abilities to communicate simply through mouthing words. The first part of this project lets you generate statements by mouthing words. After this, the second part of the project takes your inputted text and generates audio for the text in your own voice.</p>
+          <br />
+          <h5>The Developers</h5>
+          <p>This project was developed by four high school and college students.
+            <table>
+              <tr><td>Neil Deshmukh</td><td><a href="https://neildeshmukh.com">https://neildeshmukh.com</a></td></tr>
+              <tr><td>Andrew Mascillaro</td><td><a href="https://intermezzio.github.io">https://intermezzio.github.io</a></td></tr>
+              <tr><td>William Qin</td><td><a href="https://github.com/MathTauAthogen">https://github.com/MathTauAthogen</a></td></tr>
+              <tr><td>Eric Zheng</td><td><a href="https://ericzheng.org">https://ericzheng.org</a></td></tr>
+              
+            </table>
+          <br />
+          <p>Credit to <a href="https://thenounproject">The Noun Project</a> for icons used in the logo.</p>
+          </span>
+      </div>
+    </div>
   </div>
+  <footer class="page-footer orange lighten-1">
+    <div class="footer-copyright">
+      <div class="container">
+      © 2019 Speak Into Space
+      <a class="grey-text text-lighten-4 right" href="#">Back to Top</a>
+      </div>
+    </div>
+  </footer>
 </div>
 <!-- Materialize JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
