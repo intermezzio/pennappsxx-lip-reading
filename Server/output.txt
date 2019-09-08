@@ -24,3 +24,17 @@ lm=None, beam=0, bs=1, test_aug:0, horflip True: CER 0.7500, WER 1.333333
 lm=None, beam=0, bs=1, test_aug:0, horflip True: CER 0.7500, WER 1.333333
 lm=None, beam=0, bs=1, test_aug:0, horflip True: CER 2.3125, WER 3.666667
 lm=None, beam=0, bs=1, test_aug:0, horflip True: CER 2.0000, WER 3.000000
+lm=None, beam=0, bs=1, test_aug:0, horflip True: CER 2.2500, WER 2.666667
+lm=None, beam=0, bs=1, test_aug:0, horflip True: CER 3.9375, WER 4.666667
+lm=None, beam=0, bs=1, test_aug:0, horflip True: CER 1.8125, WER 3.000000
+lm=None, beam=0, bs=1, test_aug:0, horflip True: CER 0.9375, WER 1.666667
+lm=None, beam=0, bs=1, test_aug:0, horflip True: CER 1.3750, WER 2.333333
+lm=None, beam=0, bs=1, test_aug:0, horflip True: CER 2.0000, WER 2.666667
+lm=None, beam=0, bs=1, test_aug:0, horflip True: CER 3.3750, WER 4.333333
+lm=None, beam=0, bs=1, test_aug:0, horflip True: CER 1.3125, WER 2.333333
+lm=None, beam=0, bs=1, test_aug:0, horflip True: CER 1.1875, WER 2.000000
+lm=None, beam=0, bs=1, test_aug:0, horflip True: CER 1.5000, WER 3.000000
+lm=None, beam=0, bs=1, test_aug:0, horflip True: CER 1.1875, WER 2.000000
+lm=None, beam=0, bs=1, test_aug:0, horflip True: CER 0.8125, WER 1.000000
+lm=None, beam=0, bs=1, test_aug:0, horflip True: CER 1.5625, WER 2.000000
+lm=None, beam=0, bs=1, test_aug:0, horflip True: CER 1.1250, WER 2.000000

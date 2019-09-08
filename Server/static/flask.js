@@ -3,6 +3,7 @@ const URL = 'https://speakinto.space';
 
 
 var video, reqBtn, startBtn, stopBtn, ul, stream, recorder, timer, recorderaud;
+var load = document.getElementById("prog-bar");
 video = document.getElementById('video');
 var videoWidth, videoHeight;
 document.getElementById("video").volume = 0;
@@ -104,6 +105,7 @@ function startRecording() {
 
 function sendNew(){
   recorder.ondataavailable = e => {
+    load.style.visibility = "visible";
 
     var formData = new FormData();
     formData.append('clip', e.data,  (new Date().toISOString() + '').slice(4, 28).toString() + '.webm');
@@ -111,6 +113,7 @@ function sendNew(){
     var request = new XMLHttpRequest();
     request.open("POST", URL + "/form");
     request.onload = function() {
+      load.style.visibility = "hidden";
       console.log(this.responseText);
       document.getElementById('transcript-txt').value=this.responseText;
     }
@@ -123,6 +126,7 @@ function sendNew(){
 
 function stopRecording() {
   recorder.ondataavailable = e => {
+    load.style.visibility = "visible";
 
     var formData = new FormData();
     formData.append('clip', e.data, (new Date().toISOString() + '').slice(4, 28).toString() + '.webm');
@@ -130,6 +134,7 @@ function stopRecording() {
     var request = new XMLHttpRequest();
     request.open("POST", URL + "/form");
     request.onload = function() {
+      load.style.visibility = "hidden";
       console.log(this.responseText);
       document.getElementById('transcript-txt').value = this.responseText;
     }
