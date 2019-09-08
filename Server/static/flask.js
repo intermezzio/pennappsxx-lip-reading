@@ -21,7 +21,11 @@ function requestVideo() {
     .then(stm => {
       stream = stm;
       reqBtn.style.display = 'none';
-      startBtn.removeAttribute('disabled');
+      // startBtn.removeAttribute('disabled');
+      startBtn.classList.toggle("disabled");
+      video.srcObject = stream;
+      document.getElementById("target").style.display = "inline";
+      document.getElementById("box").style.display = "inline";
     }).catch(e => console.error(e));
 }
 
@@ -29,11 +33,12 @@ function startRecording() {
   recorder = new MediaRecorder(stream, {audioBitsPerSecond: 0});
   recorder.start();
   document.getElementById('transcript-txt').textContent="";
-  video.srcObject = stream;
-  stopBtn.removeAttribute('disabled');
-  startBtn.disabled = true;
+  // stopBtn.removeAttribute('disabled');
+  // startBtn.disabled = true;
   setTimeout(sendNew, 5000)
 
+  startBtn.classList.toggle("disabled");
+  stopBtn.classList.toggle("disabled");
 }
 
 function sendNew(){
@@ -74,10 +79,11 @@ function stopRecording() {
     clearTimeout(timer);
     timer = 0;
   }
-  video.srcObject = null;
-  stopBtn.removeAttribute('disabled');
-  startBtn.removeAttribute('disabled');
-  stopBtn.disabled = true;
+//   stopBtn.removeAttribute('disabled');
+//   startBtn.removeAttribute('disabled');
+//   stopBtn.disabled = true;
+  startBtn.classList.toggle("disabled");
+  stopBtn.classList.toggle("disabled");
 }
 
 function textToSpeech(text) {

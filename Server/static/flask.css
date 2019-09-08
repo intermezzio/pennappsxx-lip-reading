@@ -26,6 +26,17 @@
   width: 40px;
   left: calc(50% - 20px);
   top: 50%;
-  color: red;
+  color: #ffa726;
   font-size: 500%;
+  display: none;
+}
+
+#box {
+  border: 3px solid #ffa726;
+  width: 400px;
+  height: 400px;
+  position: absolute;
+  left: calc(50% - 200px);
+  top: calc(50% - 200px + 40px);
+  display: none;
 }

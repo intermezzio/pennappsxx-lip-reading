@@ -27,8 +27,8 @@
     <button hidden type="submit" id = "go"></button>
     <div id="video-buttons">
       <a class="waves-effect waves-light btn" id='request'>Request Camera<i class="material-icons right">camera_alt</i></a>
-      <a class="waves-effect waves-light btn" id='start' onclick='startRecording()'>Start Recording<i class="material-icons right">videocam</i></a>
-      <a class="waves-effect waves-light btn" id='stop' onclick='stopRecording()' hidden>Stop Recording<i class="material-icons right">videocam_off</i></a>
+      <a class="waves-effect waves-light btn disabled" id='start' onclick='startRecording()'>Start Recording<i class="material-icons right">videocam</i></a>
+      <a class="waves-effect waves-light btn disabled" id='stop' onclick='stopRecording()' hidden>Stop Recording<i class="material-icons right">videocam_off</i></a>
     </div>
     <!--<button id='start' class='btn' onclick = "startRecording()">
       Start Recording <i class="material-icons right">videocam</i>
@@ -37,6 +37,7 @@
       <!--Stop Recording <i class="material-icons right">videocam_off</i> -->
     </button>
     <div id="video-wrap">
+      <div id="box"></div>
       <div id="target">+</div>
       <video id='video' autoplay></video>
     </div>
