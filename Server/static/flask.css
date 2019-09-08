@@ -7,6 +7,12 @@
   margin: 0 auto;
 }
 
+#transcript-txt {
+  border: none;
+  min-height: 50px;
+  height: auto;
+}
+
 #video-buttons {
   text-align: center;
   margin: 20px;

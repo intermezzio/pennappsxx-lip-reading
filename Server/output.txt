@@ -13,3 +13,14 @@ lm=None, beam=0, bs=1, test_aug:0, horflip True: CER 0.5000, WER 0.666667
 lm=None, beam=0, bs=1, test_aug:0, horflip True: CER 0.5000, WER 0.666667
 lm=None, beam=0, bs=1, test_aug:0, horflip True: CER 0.5000, WER 0.666667
 lm=None, beam=0, bs=1, test_aug:0, horflip True: CER 0.5000, WER 0.666667
+lm=None, beam=0, bs=1, test_aug:0, horflip True: CER 0.5000, WER 0.666667
+lm=None, beam=0, bs=1, test_aug:0, horflip True: CER 0.6250, WER 0.666667
+lm=None, beam=0, bs=1, test_aug:0, horflip True: CER 0.6250, WER 0.666667
+lm=None, beam=0, bs=1, test_aug:0, horflip True: CER 1.1875, WER 2.333333
+lm=None, beam=0, bs=1, test_aug:0, horflip True: CER 0.6875, WER 1.000000
+lm=None, beam=0, bs=1, test_aug:0, horflip True: CER 0.6250, WER 0.666667
+lm=None, beam=0, bs=1, test_aug:0, horflip True: CER 0.6875, WER 1.333333
+lm=None, beam=0, bs=1, test_aug:0, horflip True: CER 0.7500, WER 1.333333
+lm=None, beam=0, bs=1, test_aug:0, horflip True: CER 0.7500, WER 1.333333
+lm=None, beam=0, bs=1, test_aug:0, horflip True: CER 2.3125, WER 3.666667
+lm=None, beam=0, bs=1, test_aug:0, horflip True: CER 2.0000, WER 3.000000

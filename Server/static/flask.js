@@ -1,4 +1,4 @@
-// const URL = 'http://127.0.0.1:5000';
+//const URL = 'http://127.0.0.1:5000';
 const URL = 'http://3.210.181.96:5000';
 
 
@@ -40,10 +40,10 @@ function requestVideo() {
 function startRecording() {
   recorder = new MediaRecorder(stream, {audioBitsPerSecond: 0});
   recorder.start();
-  document.getElementById('transcript-txt').textContent="";
+  document.getElementById('transcript-txt').value="";
   // stopBtn.removeAttribute('disabled');
   // startBtn.disabled = true;
-  setTimeout(sendNew, 5000)
+  setTimeout(sendNew, 8000)
 
   startBtn.classList.toggle("disabled");
   stopBtn.classList.toggle("disabled");
@@ -58,14 +58,15 @@ function sendNew(){
     var request = new XMLHttpRequest();
     request.open("POST", URL + "/form");
     request.onload = function() {
-      document.getElementById('transcript-txt').textContent=this.responseText;
+      console.log(this.responseText);
+      document.getElementById('transcript-txt').value=this.responseText;
     }
     request.send(formData);
 
   };
   recorder.stop();
   recorder.start();
-  timer = setTimeout(sendNew, 3000)
+  timer = setTimeout(sendNew, 8000)
 }
 
 
@@ -79,6 +80,7 @@ function stopRecording() {
     request.open("POST", URL + "/form");
     request.onload = function() {
       console.log(this.responseText);
+      document.getElementById('transcript-txt').value = this.responseText;
     }
     request.send(formData);
   };
