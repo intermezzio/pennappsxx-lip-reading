@@ -39,8 +39,8 @@
     <button id='stop' class='btn' onclick = "stopRecording()" hidden>-->
       <!--Stop Recording <i class="material-icons right">videocam_off</i> -->
     <div id="video-wrap">
-      <div id="box"></div>
-      <div id="target">+</div>
+      <div id="box" class=desktop-only></div>
+      <div id="target" class=desktop-only>+</div>
       <video id='video' height=480 width=640 background-color=black autoplay></video>
     </div>
     <br id="transcript" /><br />
@@ -56,8 +56,8 @@
         <a class="waves-effect waves-light btn" onclick="textToSpeech(document.getElementById('transcript-txt').value);">
           Read Transcript
         </a>
-        <a class="waves-effect waves-light btn" onclick="">Read In Your Voice</a>
-        <input type="text" id="user" placeholder="Your Name">
+        <a class="waves-effect waves-light btn" onclick="userTextToSpeech(document.getElementById('transcript-txt').value);">Read In My Voice</a>
+        <input type="text" id="user" placeholder="Your Name" class="white-text">
       </div>
     </div>
     <br />

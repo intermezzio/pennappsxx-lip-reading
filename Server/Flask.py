@@ -65,26 +65,25 @@ def get_voice():
     print(request.form.get('string'))
     string = request.form.get('string')
     print(string)
-    if "voice=" in string:
-        textAndVoice = string.split("voice=")
-        text = textAndVoice[0]
-        voices = textAndVoice[1]
-        os.system('/home/ubuntu/anaconda3/envs/tensorflow_p36/bin/python3 ../ML-Audio/pennapp_audio.py --no_sound -n {} -t "{}"'.format(voices,text))
-        path_to_file = "demo_output_00.wav"
-        return send_file(
-         path_to_file, 
-         mimetype="audio/wav", 
-         as_attachment=True, 
-         attachment_filename="voice.wav")
-    else:
-        text_input = texttospeech.types.SynthesisInput(text=string)
-        audio = client.synthesize_speech(text_input, voice, audio_config)
+    text_input = texttospeech.types.SynthesisInput(text=string)
+    audio = client.synthesize_speech(text_input, voice, audio_config)
 
-        response = make_response(audio.audio_content)
-        response.headers['Content-Type'] = 'audio/wav'
-        response.headers['Content-Disposition'] = 'attachment; filename=voice.wav'
+    response = make_response(audio.audio_content)
+    response.headers['Content-Type'] = 'audio/wav'
+    response.headers['Content-Disposition'] = 'attachment; filename=voice.wav'
 
-        return response
+    return response
+
+@app.route('/myvoice', methods=['POST'])
+def myvoice():
+    string = request.form.get('string')
+    user = request.form.get('user')
+    os.system('/home/ubuntu/anaconda3/envs/tensorflow_p36/bin/python3 ../ML-Audio/pennapp_audio.py --no_sound -n {} -t "{}"'.format(user, string))
+    return send_file(
+	 '../Server/demo_output_00.wav', 
+	 mimetype="audio/wav", 
+	 as_attachment=True, 
+	 attachment_filename="voice.wav")
 
 #TODO: Prepend a session/computer specific identifier to delete only the session specific files, for scaling.
 
