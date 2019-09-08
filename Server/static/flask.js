@@ -32,7 +32,7 @@ stopBtn2.disabled = true;
 
 function requestVideo() {
   navigator.mediaDevices.getUserMedia({
-      video:{facingMode: {exact: mode}},
+      video:{facingMode: {exact: "user"}},
       audio: true
 
     })
